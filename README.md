@@ -1,8 +1,8 @@
-# 🚀 Bin2Dec - React App
+# 🚀 React - Nextjs - Bin2Dec 
 
 Idea from [App-ideas](https://github.com/florinpop17/app-ideas)
 
-Demo [React - Bin2Dec]()
+Demo in [react-nextjs-bin2dec]()
 
 Binary is the number system all digital computers are based on.
 Therefore it's important for developers to understand binary, or base 2,
