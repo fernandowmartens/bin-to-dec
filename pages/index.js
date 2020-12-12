@@ -1,65 +1,91 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, { useState } from "react";
+import Head from "next/head";
 
 export default function Home() {
+  const [dec, setDec] = useState(null);
+  const [error, setError] = useState(0);
+
+  const convert = () => {
+    var dec = document.getElementById("getDec").value;
+    if (dec.match(/^[0-1]+$/g) === null) {
+      console.log("> Não passou na validação");
+      setError(1);
+      return;
+    } else {
+      console.log("> Passou com sucesso pela validação");
+      setError(0);
+    }
+
+    var multiplier = 0,
+      count = 0,
+      soma = 0,
+      len = dec.length,
+      num = 0;
+
+    for (let i = len; i > 0; i--) {
+      num = parseInt(dec.substring(i - 1, i));
+      multiplier = num * Math.pow(2, count);
+      count++;
+      soma += multiplier;
+    }
+
+    setDec(soma);
+  };
+
+  const prevent = (e) => {
+    e.preventDefault();
+  };
+
+  const copyAll = (e) => {
+    e.target.select();
+    document.execCommand("copy");
+  };
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Bin2Dec</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <main>
+        <div className="App">
+          <img
+            src={"binario.jpg"}
+            className="logo"
+            alt="imagem de numeros binários"
+          />
+          <h1 className="title">Conversor de Binário para Decimal</h1>
+          <form className="form" onSubmit={prevent}>
+            <input
+              id="getDec"
+              className="input-block"
+              placeholder="Digite aqui"
+              maxLength="8"
+              typeof="number"
+              inputMode="numeric"
+              autoFocus
+            />
+            {error === 1 && (
+              <div className="message-box">Escreva apenas 0's e 1's</div>
+            )}
+            <button className="convert-button" onClick={convert}>
+              Converter
+            </button>
+            {dec != null && (
+              <>
+                <input
+                  className="input-block two"
+                  value={dec}
+                  onClick={copyAll}
+                  readOnly
+                />
+                <span className="span">Clique na caixa para copiar</span>
+              </>
+            )}
+          </form>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
-  )
+  );
 }
