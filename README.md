@@ -2,7 +2,7 @@
 
 Idea from [App-ideas](https://github.com/florinpop17/app-ideas)
 
-Demo in [react-nextjs-bin2dec]()
+Demo in [react-nextjs-bin2dec](https://react-nextjs-bin2dec.vercel.app/)
 
 Binary is the number system all digital computers are based on.
 Therefore it's important for developers to understand binary, or base 2,
