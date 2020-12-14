@@ -3,8 +3,7 @@
 Demo in [react-nextjs-bin2dec](https://react-nextjs-bin2dec.vercel.app/)
 
 Binary is the number system all digital computers are based on.
-The purpose of Bin2Dec is to provide practice and
-understanding of how binary calculations.
+The purpose of Bin2Dec is to provide a simple and clean interface for converting binary to decimal
 
 ## User Stories
 
