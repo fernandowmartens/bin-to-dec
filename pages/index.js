@@ -64,6 +64,7 @@ export default function Home() {
               maxLength="8"
               typeof="number"
               inputMode="numeric"
+              autoComplete="off"
               autoFocus
             />
             {error === 1 && (
